@@ -32,8 +32,7 @@ class ToyForm extends Component {
     .then(data => {
       <div>
         <ToyCard key={data.id} toy={data} />
-        {this.props.handleClick(this.state.display)}
-        {this.props.handleSubmit}
+        {this.props.handleSubmit(data)}
       </div>
       })
   }

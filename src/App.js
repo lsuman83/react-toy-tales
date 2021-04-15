@@ -13,17 +13,20 @@ class App extends React.Component{
     toys: []
   }
 
-  handleSubmit = (event) => {
-    <ToyContainer />
+  handleSubmit = (newToy) => {
+    let oldBoolean =  !this.state.display
+    this.setState({
+      display: oldBoolean,
+      toys: [...this.state.toys, newToy]
+    })
   }
+
 
   handleClick = () => {
     let newBoolean = !this.state.display
     this.setState({
       display: newBoolean
     })
-
-    this.handleSubmit()
   }
 
   componentDidMount() {
@@ -42,7 +45,7 @@ class App extends React.Component{
         <Header/>
         { this.state.display
             ?
-              <ToyForm handleClick={this.handleClick.bind(this)}/>
+              <ToyForm handleSubmit={this.handleSubmit.bind(this)}/>
             :
           null
         }
