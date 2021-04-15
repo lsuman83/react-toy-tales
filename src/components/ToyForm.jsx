@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ToyCard from './ToyCard';
-import App from '../App.js'
+import ToyContainer from './ToyContainer'
 
 class ToyForm extends Component {
 
@@ -8,7 +8,7 @@ class ToyForm extends Component {
     name: '',
     image: '',
     likes: 0,
-    display: false
+    display: true
   }
 
   handleInputChange = (event) => {
@@ -31,10 +31,11 @@ class ToyForm extends Component {
     .then(resp => resp.json())
     .then(data => {
       <div>
-        <ToyCard toy={data} />
-        <App display={false}/>
+        <ToyCard key={data.id} toy={data} />
+        {this.props.handleClick(this.state.display)}
+        {this.props.handleSubmit}
       </div>
-    })
+      })
   }
 
   render() {
